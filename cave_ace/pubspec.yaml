@@ -22,3 +22,6 @@ flutter:
   assets:
     - assets/images/hector.png
     - assets/images/rock_bullet.png
+    - assets/images/bomb_ptero.png
+
+    - assets/stages/test.json

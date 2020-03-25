@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
 
+import './models/stage.dart';
 import './components/player.dart';
+import './components/stage_controller.dart';
 
 class CaveAce extends BaseGame with PanDetector {
 
   static const double TILE_SIZE = 30.0;
   Player player;
+  Stage stage;
 
-  CaveAce() {
+  CaveAce(this.stage) {
+    add(StageController(stage));
+
     add(
         player = Player()
           ..x = 150

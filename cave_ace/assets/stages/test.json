@@ -1,0 +1,21 @@
+{
+  "name": "Cave Ace stage test",
+  "waves": [
+    {
+      "time": 1,
+      "enemy": "BOMB_PTERO",
+      "formation": "LINE",
+      "unitSize": 3.5,
+      "units": 3,
+      "x": 2
+    },
+    {
+      "time": 8,
+      "enemy": "BOMB_PTERO",
+      "formation": "LINE",
+      "unitSize": 3.0,
+      "units": 2,
+      "x": 3
+    }
+  ]
+}
