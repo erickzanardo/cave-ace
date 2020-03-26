@@ -5,7 +5,7 @@ import 'package:flame/time.dart';
 import 'dart:ui';
 import '../game.dart';
 import '../models/stage.dart';
-import './enemies/bomb_ptero.dart';
+import './enemies/enemy_mapper.dart';
 
 class StageController extends Component with HasGameRef<CaveAce> {
 
@@ -36,7 +36,7 @@ class StageController extends Component with HasGameRef<CaveAce> {
     if (wave.formation == 'LINE') {
       for (var i = 0; i < wave.units; i++) {
         result.add(
-            _mapEnemy(wave.enemy)
+            mapEnemy(wave.enemy)
             ..x = (wave.x * CaveAce.TILE_SIZE) + (i * wave.unitSize * CaveAce.TILE_SIZE).toDouble()
         );
       }
@@ -45,15 +45,6 @@ class StageController extends Component with HasGameRef<CaveAce> {
     }
     
     throw 'Unknow formation type: ${wave.formation}';
-  }
-
-  // TODO move this away and make it consider other type of enemies
-  PositionComponent _mapEnemy(String enemy) {
-    if (enemy == 'BOMB_PTERO') {
-      return BombPtero();
-    }
-
-    throw 'Unknow enemy type: $enemy';
   }
 
   @override
