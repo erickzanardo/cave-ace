@@ -9,8 +9,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Flame.util.fullScreen();
+  final size = await Flame.util.initialDimensions();
 
   final stage = await StageLoader.loadStageData('test');
-  runApp(CaveAce(stage).widget);
+  runApp(CaveAce(stage, size).widget);
 }
 

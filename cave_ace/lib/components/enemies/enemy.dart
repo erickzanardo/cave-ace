@@ -2,7 +2,10 @@ import 'package:flame/components/animation_component.dart';
 import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/position.dart';
 
+import 'dart:ui';
+
 import '../../game.dart';
+import '../has_hitbox.dart';
 
 abstract class EnemyBehaviour {
   void update(double dt, Enemy enemy);
@@ -30,8 +33,13 @@ class SingleDirectionBehavior extends EnemyBehaviour {
   bool renderFlipY() => velocity.y > 0;
 }
 
-abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce> {
+abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox {
   EnemyBehaviour behaviour;
+  int hitPoints;
+
+  bool _isDestroyed = false;
+
+  Rect _hitBox;
 
   Enemy({
     double width,
@@ -42,7 +50,10 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce> {
     double textureHeight,
     double stepTime,
 
+    this.hitPoints = 1,
     this.behaviour,
+
+    Rect hitBox,
   }): super.sequenced(
       width,
       height,
@@ -54,6 +65,8 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce> {
   ) {
     renderFlipY = behaviour.renderFlipY();
     renderFlipX = behaviour.renderFlipX();
+
+    _hitBox = hitBox ?? Rect.fromLTWH(0, 0, width, height);
   }
 
   @override
@@ -65,6 +78,28 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce> {
   }
 
   @override
-  bool destroy() => y > gameRef.size.height;
+  void render(Canvas canvas) {
+    super.render(canvas);
+
+    if (gameRef.debugMode()) {
+      renderHitboxOutline(canvas);
+    }
+  }
+
+  @override
+  Rect hitBox() => _hitBox;
+
+  @override
+  bool destroy() => _isDestroyed || y > gameRef.size.height;
+
+  void takeHit() {
+    hitPoints--;
+
+    if (hitPoints == 0) {
+      // TODO add animations
+
+      _isDestroyed = true;
+    }
+  }
 }
 

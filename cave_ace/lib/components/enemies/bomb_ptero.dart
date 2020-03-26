@@ -1,4 +1,5 @@
 import 'package:flame/position.dart';
+import 'dart:ui';
 
 import '../../game.dart';
 import './enemy.dart';
@@ -17,6 +18,13 @@ class BombPtero extends Enemy {
 
       behaviour: SingleDirectionBehavior(
           Position(0.0, SPEED)
-      )
+      ),
+
+      hitBox: Rect.fromLTWH(
+          CaveAce.TILE_SIZE,
+          0,
+          CaveAce.TILE_SIZE,
+          CaveAce.TILE_SIZE * 2,
+      ),
   );
 }

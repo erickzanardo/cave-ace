@@ -13,14 +13,18 @@ class CaveAce extends BaseGame with PanDetector {
   Player player;
   Stage stage;
 
-  CaveAce(this.stage) {
+  @override
+  bool debugMode() => false;
+
+  CaveAce(this.stage, Size _size) {
+    this.size = _size;
     add(StageController(stage));
 
-    add(
-        player = Player()
-          ..x = 150
-          ..y = 450
-    );
+    player = Player();
+    player.x = (size.width / 2) - (player.width / 2);
+    player.y = size.height - player.height - 50;
+
+    add(player);
   }
 
   @override
