@@ -6,6 +6,7 @@ import 'dart:ui';
 
 import '../../game.dart';
 import '../has_hitbox.dart';
+import '../explosion.dart';
 
 abstract class EnemyBehaviour {
   void update(double dt, Enemy enemy);
@@ -75,6 +76,10 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
 
     if (behaviour != null)
       behaviour.update(dt, this);
+
+    if (gameRef.player.collidesWith(this)) {
+      _destroy();
+    }
   }
 
   @override
@@ -92,13 +97,16 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
   @override
   bool destroy() => _isDestroyed || y > gameRef.size.height;
 
+  void _destroy() {
+    gameRef.add(Explosion.normal(x, y));
+    _isDestroyed = true;
+  }
+
   void takeHit() {
     hitPoints--;
 
     if (hitPoints == 0) {
-      // TODO add animations
-
-      _isDestroyed = true;
+      _destroy();
     }
   }
 }

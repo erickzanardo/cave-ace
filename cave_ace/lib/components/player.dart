@@ -8,7 +8,9 @@ import 'dart:ui';
 import '../game.dart';
 import './bullet.dart';
 
-class Player extends PositionComponent with HasGameRef<CaveAce> {
+import './has_hitbox.dart';
+
+class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
 
   Animation dino;
   Timer _bulletCreator;
@@ -63,5 +65,17 @@ class Player extends PositionComponent with HasGameRef<CaveAce> {
   void move(double dx, double dy) {
     x += dx;
     y += dy;
+  }
+
+  @override
+  Rect hitBox() => const Rect.fromLTWH(
+      CaveAce.TILE_SIZE,
+      0,
+      CaveAce.TILE_SIZE,
+      CaveAce.TILE_SIZE * 2,
+  );
+
+  void takeHit() {
+    // TODO
   }
 }
