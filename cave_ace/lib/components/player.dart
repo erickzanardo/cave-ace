@@ -7,6 +7,7 @@ import 'dart:ui';
 
 import '../game.dart';
 import './bullets/simple_player_bullet.dart';
+import './explosion.dart';
 
 import './has_hitbox.dart';
 
@@ -15,6 +16,8 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
   Animation dino;
   Timer _bulletCreator;
   int health;
+
+  bool _isDestroyed = false;
 
   Player() {
     width = CaveAce.TILE_SIZE * 3;
@@ -76,7 +79,18 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
     health --;
 
     if (health == 0) {
-      // TODO game over
+      _isDestroyed = true;
+      gameRef.add(
+          Explosion.big(x, y)
+          ..onFinish = _callGameOver
+      );
     }
   }
+
+  void _callGameOver() {
+    gameRef.gameOver();
+  }
+
+  @override
+  bool destroy() => _isDestroyed;
 }

@@ -9,6 +9,8 @@ class Explosion extends AnimationComponent {
   Explosion.normal(double x, double y): this(x, y, CaveAce.TILE_SIZE, CaveAce.TILE_SIZE);
   Explosion.big(double x, double y): this(x, y, CaveAce.TILE_SIZE * 2, CaveAce.TILE_SIZE * 2);
 
+  void Function() onFinish;
+
   Explosion(double x, double y, double width, double height): super(
       50,
       50,
@@ -18,4 +20,10 @@ class Explosion extends AnimationComponent {
       this.x = x;
       this.y = y;
     }
+
+  @override
+  void onDestroy() {
+    if (onFinish != null)
+      onFinish();
+  }
 }
