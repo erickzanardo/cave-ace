@@ -5,7 +5,7 @@ import '../../game.dart';
 import './enemy.dart';
 
 class BombPtero extends Enemy {
-  static const SPEED = 30.0;
+  static const SPEED = 50.0;
 
   BombPtero(): super(
       width: CaveAce.TILE_SIZE * 3,

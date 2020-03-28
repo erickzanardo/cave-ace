@@ -5,17 +5,41 @@
       "time": 1,
       "enemy": "BOMB_PTERO",
       "formation": "LINE",
-      "unitSize": 3.5,
+      "unitSize": 3.8,
       "units": 3,
-      "x": 2
+      "x": 1
     },
     {
-      "time": 8,
+      "time": 7,
       "enemy": "BOMB_PTERO",
       "formation": "LINE",
       "unitSize": 3.0,
       "units": 2,
       "x": 3
+    },
+    {
+      "time": 10,
+      "enemy": "BOMB_PTERO",
+      "formation": "COLUMN",
+      "unitSize": 2.0,
+      "units": 5,
+      "x": 0
+    },
+    {
+      "time": 15,
+      "enemy": "BOMB_PTERO",
+      "formation": "COLUMN",
+      "unitSize": 2.0,
+      "units": 5,
+      "x": 5
+    },
+    {
+      "time": 20,
+      "enemy": "BOMB_PTERO",
+      "formation": "COLUMN",
+      "unitSize": 2.0,
+      "units": 5,
+      "x": 8 
     }
   ]
 }

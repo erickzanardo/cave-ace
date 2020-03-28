@@ -28,13 +28,7 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
   void _createBullet() {
     gameRef.add(
         Bullet()
-          ..x = x + Bullet.SIZE
-          ..y = y + Bullet.SIZE
-    );
-
-    gameRef.add(
-        Bullet()
-          ..x = x + width - Bullet.SIZE * 2
+          ..x = x + (width / 2) - Bullet.SIZE / 2
           ..y = y + Bullet.SIZE
     );
   }
