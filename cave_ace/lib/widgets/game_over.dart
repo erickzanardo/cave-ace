@@ -8,9 +8,15 @@ class GameOverOverlay extends StatelessWidget {
   final double width;
   final double height;
 
+  VoidCallback onRestart;
+  VoidCallback onExit;
+
   GameOverOverlay({
     this.width,
     this.height,
+
+    this.onRestart,
+    this.onExit,
   });
 
   @override
@@ -25,8 +31,8 @@ class GameOverOverlay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Label(label: "Game Over", fontSize: 50),
-                  PrimaryButton(label: "Restart"),
-                  SecondaryButton(label: "Exit"),
+                  PrimaryButton(label: "Restart", onPress: onRestart),
+                  SecondaryButton(label: "Exit", onPress: onExit),
                 ]
             ),
         ),

@@ -21,6 +21,11 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
 
   CaveAce(this.stage, Size _size) {
     this.size = _size;
+
+    _init();
+  }
+
+  void _init() {
     add(StageController(stage));
 
     player = Player();
@@ -30,6 +35,11 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
     add(player);
 
     add(HealthIndicator());
+  }
+
+  void _restart() {
+    components.clear();
+    _init();
   }
 
   @override
@@ -61,6 +71,11 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
         GameOverOverlay(
             width: TILE_SIZE * 10,
             height: TILE_SIZE * 10,
+
+            onRestart: () {
+              removeWidgetOverlay("GameOver");
+              _restart();
+            }
         )
     );
   }
