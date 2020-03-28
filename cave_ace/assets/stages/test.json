@@ -2,44 +2,20 @@
   "name": "Cave Ace stage test",
   "waves": [
     {
-      "time": 1,
-      "enemy": "BOMB_PTERO",
+      "time": 2,
+      "enemy": "SHOOTING_PTERO",
       "formation": "LINE",
       "unitSize": 3.8,
       "units": 3,
       "x": 1
     },
     {
-      "time": 7,
+      "time": 6,
       "enemy": "BOMB_PTERO",
-      "formation": "LINE",
+      "formation": "COLUMN",
       "unitSize": 3.0,
-      "units": 2,
-      "x": 3
-    },
-    {
-      "time": 10,
-      "enemy": "BOMB_PTERO",
-      "formation": "COLUMN",
-      "unitSize": 2.0,
-      "units": 5,
-      "x": 0
-    },
-    {
-      "time": 15,
-      "enemy": "BOMB_PTERO",
-      "formation": "COLUMN",
-      "unitSize": 2.0,
-      "units": 5,
-      "x": 5
-    },
-    {
-      "time": 20,
-      "enemy": "BOMB_PTERO",
-      "formation": "COLUMN",
-      "unitSize": 2.0,
-      "units": 5,
-      "x": 8 
+      "units": 4,
+      "x": 2
     }
   ]
 }

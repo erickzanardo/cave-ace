@@ -80,7 +80,11 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
     if (gameRef.player.collidesWith(this)) {
       _destroy();
     }
+
+    onUpdate(dt);
   }
+
+  void onUpdate(double dt) {}
 
   @override
   void render(Canvas canvas) {

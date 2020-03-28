@@ -6,7 +6,7 @@ import 'package:flame/time.dart';
 import 'dart:ui';
 
 import '../game.dart';
-import './bullet.dart';
+import './bullets/simple_player_bullet.dart';
 
 import './has_hitbox.dart';
 
@@ -27,9 +27,9 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
 
   void _createBullet() {
     gameRef.add(
-        Bullet()
-          ..x = x + (width / 2) - Bullet.SIZE / 2
-          ..y = y + Bullet.SIZE
+        SimplePlayerBullet()
+          ..x = x + (width / 2) - (SimplePlayerBullet.SIZE / 2)
+          ..y = y - SimplePlayerBullet.SIZE
     );
   }
 
