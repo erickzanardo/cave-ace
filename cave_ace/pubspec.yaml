@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flame: ^0.18.1
+  flame: ^0.18.2
 
   cupertino_icons: ^0.1.2
 
@@ -26,5 +26,11 @@ flutter:
     - assets/images/bomb_ptero.png
     - assets/images/shooting_ptero.png
     - assets/images/explosion.png
+    - assets/images/ham.png
 
     - assets/stages/test.json
+
+  fonts:
+   - family: CubeCavern
+     fonts:
+       - asset: assets/fonts/cubecavern_memesbruh03.ttf

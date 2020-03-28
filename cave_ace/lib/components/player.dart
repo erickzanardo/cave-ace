@@ -14,6 +14,7 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
 
   Animation dino;
   Timer _bulletCreator;
+  int health;
 
   Player() {
     width = CaveAce.TILE_SIZE * 3;
@@ -23,6 +24,8 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
         ..stepTime = 0.2;
 
     _bulletCreator = Timer(0.5, repeat: true, callback: _createBullet);
+
+    health = 2;
   }
 
   void _createBullet() {
@@ -70,6 +73,10 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
   );
 
   void takeHit() {
-    // TODO
+    health --;
+
+    if (health == 0) {
+      // TODO game over
+    }
   }
 }

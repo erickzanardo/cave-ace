@@ -6,6 +6,7 @@ import 'package:flame/gestures.dart';
 import './models/stage.dart';
 import './components/player.dart';
 import './components/stage_controller.dart';
+import './components/health_indicator.dart';
 
 class CaveAce extends BaseGame with PanDetector {
 
@@ -25,6 +26,8 @@ class CaveAce extends BaseGame with PanDetector {
     player.y = size.height - player.height - 50;
 
     add(player);
+
+    add(HealthIndicator());
   }
 
   @override
