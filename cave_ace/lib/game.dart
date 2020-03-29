@@ -7,6 +7,7 @@ import './models/stage.dart';
 import './components/player.dart';
 import './components/stage_controller.dart';
 import './components/health_indicator.dart';
+import './components/background.dart';
 
 import './widgets/game_over.dart';
 
@@ -26,6 +27,7 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
   }
 
   void _init() {
+    add(Background());
     add(StageController(stage));
 
     player = Player();
@@ -63,7 +65,7 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
   }
 
   @override
-  Color backgroundColor() => Color(0xFF36c5f4);
+  Color backgroundColor() => Color(0xFFe8d282);
 
   void gameOver() {
     addWidgetOverlay(

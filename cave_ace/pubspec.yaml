@@ -29,6 +29,9 @@ flutter:
     - assets/images/explosion.png
     - assets/images/ham.png
 
+    - assets/images/backgrounds/florest_1.png
+    - assets/images/backgrounds/florest_2.png
+
     - assets/stages/test.json
 
   fonts:
