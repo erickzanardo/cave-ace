@@ -1,7 +1,7 @@
 import 'package:flame/position.dart';
 
 import '../../game.dart';
-import '../enemies/enemy.dart';
+import '../has_hitbox.dart';
 import './bullet.dart';
 
 import 'dart:ui';
@@ -24,7 +24,7 @@ class SimplePlayerBullet extends Bullet {
     // TODO this can probably lead to perfomance problems as
     // this is a very naive implementation but it is ok for now
     gameRef.components
-        .where((c) => c is Enemy).cast()
+        .where((c) => c is HitableByPlayer).cast()
         .forEach((e) {
           if (collidesWith(e)) {
             isDestroyed = true;

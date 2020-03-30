@@ -34,7 +34,7 @@ class SingleDirectionBehavior extends EnemyBehaviour {
   bool renderFlipY() => velocity.y > 0;
 }
 
-abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox {
+abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox, HitableByPlayer {
   EnemyBehaviour behaviour;
   int hitPoints;
 

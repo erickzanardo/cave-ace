@@ -26,3 +26,7 @@ mixin HasHitbox on PositionComponent {
     canvas.drawRect(hitBox(), _outlinePaint);
   }
 }
+
+mixin HitableByPlayer on HasHitbox {
+  void takeHit();
+}
