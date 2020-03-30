@@ -4,9 +4,11 @@ import 'package:flame/components/mixins/has_game_ref.dart';
 
 import 'dart:ui';
 
-import './explosion.dart';
-import './has_hitbox.dart';
-import '../game.dart';
+import '../explosion.dart';
+import '../has_hitbox.dart';
+import '../../game.dart';
+
+import './pickup.dart';
 
 class _PteroCarrier extends AnimationComponent with HasGameRef<CaveAce> {
 
@@ -93,7 +95,17 @@ class PickupContainer extends SpriteComponent with HasGameRef<CaveAce>, HasHitbo
     _left.vanish(-1);
     _right.vanish(1);
     _isDestroyed = true;
-    // TODO spawn pickup
+
+    PositionComponent comp;
+    if (pickup == "SHIELD") {
+      comp = ShieldPickup();
+    }
+
+    gameRef.add(
+        comp
+        ..x = x
+        ..y = y
+    );
   }
 
   @override

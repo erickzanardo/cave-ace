@@ -93,4 +93,8 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
 
   @override
   bool destroy() => _isDestroyed;
+
+  void collectPickup(String pickupName) {
+    print(pickupName);
+  }
 }

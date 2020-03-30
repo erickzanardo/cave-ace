@@ -30,6 +30,7 @@ flutter:
     - assets/images/explosion.png
     - assets/images/ham.png
     - assets/images/box.png
+    - assets/images/shield.png
 
     - assets/images/backgrounds/florest_1.png
     - assets/images/backgrounds/florest_2.png

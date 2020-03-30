@@ -6,7 +6,7 @@ import 'dart:ui';
 import '../game.dart';
 import '../models/stage.dart';
 import './wave_mapper.dart';
-import '../components/pickup_container.dart';
+import '../components/pickups/pickup_container.dart';
 
 class StageController extends Component with HasGameRef<CaveAce> {
 
