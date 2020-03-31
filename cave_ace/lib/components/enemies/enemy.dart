@@ -77,10 +77,12 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
     if (behaviour != null)
       behaviour.update(dt, this);
 
-    if (gameRef.player.collidesWith(this)) {
-      gameRef.player.takeHit();
-      _destroy();
-    }
+    gameRef.listHitableByEnemy().forEach((e) {
+      if (collidesWith(e)) {
+        _destroy();
+        e.takeHit();
+      }
+    });
 
     onUpdate(dt);
   }

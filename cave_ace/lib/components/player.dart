@@ -8,10 +8,10 @@ import 'dart:ui';
 import '../game.dart';
 import './bullets/simple_player_bullet.dart';
 import './explosion.dart';
-
 import './has_hitbox.dart';
+import './powers/shield.dart';
 
-class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
+class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox, HitableByEnemy {
 
   Animation dino;
   Timer _bulletCreator;
@@ -95,6 +95,8 @@ class Player extends PositionComponent with HasGameRef<CaveAce>, HasHitbox {
   bool destroy() => _isDestroyed;
 
   void collectPickup(String pickupName) {
-    print(pickupName);
+    if (pickupName == "SHIELD") {
+      gameRef.add(ShieldPower());
+    }
   }
 }

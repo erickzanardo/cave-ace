@@ -1,8 +1,8 @@
 import 'package:flame/position.dart';
 
-import '../../game.dart';
-import '../enemies/enemy.dart';
 import './bullet.dart';
+import '../../game.dart';
+import '../has_hitbox.dart';
 
 import 'dart:ui';
 
@@ -21,12 +21,12 @@ class SimpleEnemyBullet extends Bullet {
 
   @override
   void onUpdate(double dt) {
-
-    if (collidesWith(gameRef.player)) {
-      isDestroyed = true;
-
-      gameRef.player.takeHit();
-    }
+    gameRef.listHitableByEnemy().forEach((e) {
+          if (collidesWith(e)) {
+            isDestroyed = true;
+            e.takeHit();
+          }
+        });
 
     if (toRect().top >= gameRef.size.height)
       isDestroyed = true;

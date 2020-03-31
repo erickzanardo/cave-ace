@@ -1,7 +1,6 @@
 import 'package:flame/position.dart';
 
 import '../../game.dart';
-import '../has_hitbox.dart';
 import './bullet.dart';
 
 import 'dart:ui';
@@ -21,16 +20,12 @@ class SimplePlayerBullet extends Bullet {
 
   @override
   void onUpdate(double dt) {
-    // TODO this can probably lead to perfomance problems as
-    // this is a very naive implementation but it is ok for now
-    gameRef.components
-        .where((c) => c is HitableByPlayer).cast()
-        .forEach((e) {
-          if (collidesWith(e)) {
-            isDestroyed = true;
-            e.takeHit();
-          }
-        });
+    gameRef.listHitableByPlayer() .forEach((e) {
+      if (collidesWith(e)) {
+        isDestroyed = true;
+        e.takeHit();
+      }
+    });
 
     if (toRect().bottom <= 0)
       isDestroyed = true;

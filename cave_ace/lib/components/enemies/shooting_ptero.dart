@@ -36,13 +36,13 @@ class ShootingPtero extends Enemy {
           CaveAce.TILE_SIZE * 2,
       ),
   ) {
-    _shooter =  Timer(4, repeat: true, callback: _shoot);
+    _shooter =  Timer(2, repeat: true, callback: _shoot);
     _shooter.start();
   }
 
 
   void _shoot() {
-    if (_random.nextDouble() >= 0.7) {
+    if (_random.nextDouble() >= 0.3) {
       gameRef.add(
           SimpleEnemyBullet()
           ..x = x + (width / 2)

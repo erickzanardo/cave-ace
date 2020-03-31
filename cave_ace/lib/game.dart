@@ -8,6 +8,7 @@ import './components/player.dart';
 import './components/stage_controller.dart';
 import './components/health_indicator.dart';
 import './components/background.dart';
+import './components/has_hitbox.dart';
 
 import './widgets/game_over.dart';
 
@@ -66,6 +67,14 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
 
   @override
   Color backgroundColor() => Color(0xFFe8d282);
+
+  Iterable<HitableByEnemy> listHitableByEnemy() =>
+    components
+        .where((c) => c is HitableByEnemy).cast();
+
+  Iterable<HitableByPlayer> listHitableByPlayer() =>
+    components
+        .where((c) => c is HitableByPlayer).cast();
 
   void gameOver() {
     addWidgetOverlay(

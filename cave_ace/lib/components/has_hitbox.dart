@@ -30,3 +30,7 @@ mixin HasHitbox on PositionComponent {
 mixin HitableByPlayer on HasHitbox {
   void takeHit();
 }
+
+mixin HitableByEnemy on HasHitbox {
+  void takeHit();
+}

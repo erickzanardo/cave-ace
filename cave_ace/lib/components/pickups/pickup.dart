@@ -26,7 +26,7 @@ abstract class Pickup extends SpriteComponent with HasGameRef<CaveAce>, HasHitbo
       String image,
       Rect hitBox,
   }): super.rectangle(width, height, image) {
-    _hitBox = hitBox ?? toRect();
+    _hitBox = hitBox ?? Rect.fromLTWH(0, 0, width, height);
 
     _speed = Position(
         random.nextBool() ? 1 : -1,
