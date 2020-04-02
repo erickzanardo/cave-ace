@@ -70,3 +70,12 @@ class ShieldPickup extends Pickup {
       image: "shield.png",
   );
 }
+
+class TrunkGunPickup extends Pickup {
+  TrunkGunPickup(): super(
+      pickupName: "TRUNK_GUN",
+      width: CaveAce.TILE_SIZE,
+      height: CaveAce.TILE_SIZE,
+      image: "trunk_pickup.png",
+  );
+}

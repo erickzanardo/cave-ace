@@ -9,6 +9,7 @@ import './components/stage_controller.dart';
 import './components/health_indicator.dart';
 import './components/background.dart';
 import './components/has_hitbox.dart';
+import './components/bullets/bullet.dart';
 
 import './widgets/game_over.dart';
 
@@ -47,17 +48,23 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
 
   @override
   void onPanStart(_) {
-    player?.beginFire();
+    listFireOpeners().forEach((e) {
+      e.beginFire();
+    });
   }
 
   @override
   void onPanEnd(_) {
-    player?.stopFire();
+    listFireOpeners().forEach((e) {
+      e.stopFire();
+    });
   }
 
   @override
   void onPanCancel() {
-    player?.stopFire();
+    listFireOpeners().forEach((e) {
+      e.stopFire();
+    });
   }
 
   @override
@@ -75,6 +82,10 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
   Iterable<HitableByPlayer> listHitableByPlayer() =>
     components
         .where((c) => c is HitableByPlayer).cast();
+
+  Iterable<CanOpenFire> listFireOpeners() =>
+    components
+        .where((c) => c is CanOpenFire).cast();
 
   void gameOver() {
     addWidgetOverlay(

@@ -22,7 +22,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/hector.png
-    - assets/images/hector_no_mount_inverted.png
+    - assets/images/hector_no_mount.png
     - assets/images/rock_bullet.png
     - assets/images/enemy_rock_bullet.png
     - assets/images/bomb_ptero.png
@@ -30,7 +30,11 @@ flutter:
     - assets/images/explosion.png
     - assets/images/ham.png
     - assets/images/box.png
+
     - assets/images/shield.png
+
+    - assets/images/trunk_gun.png
+    - assets/images/trunk_pickup.png
 
     - assets/images/backgrounds/florest_1.png
     - assets/images/backgrounds/florest_2.png

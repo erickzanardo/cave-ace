@@ -1,17 +1,20 @@
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/time.dart';
+import 'package:flame/position.dart';
 
 import 'dart:ui';
 
 import '../game.dart';
+import './bullets/bullet.dart';
 import './bullets/simple_player_bullet.dart';
 import './explosion.dart';
 import './has_hitbox.dart';
 import './powers/shield.dart';
+import './powers/trunk_gun.dart';
 import './effects/hit_effect.dart';
 
-class Player extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox, HitableByEnemy {
+class Player extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox, HitableByEnemy, CanOpenFire {
 
   Timer _bulletCreator;
   int health;
@@ -100,6 +103,26 @@ class Player extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox, Hit
   void collectPickup(String pickupName) {
     if (pickupName == "SHIELD") {
       gameRef.add(ShieldPower());
+    } else if (pickupName == "TRUNK_GUN") {
+      gameRef.add(
+          TrunkGunPower(
+              Position(
+                  -(CaveAce.TILE_SIZE + CaveAce.TILE_SIZE / 2),
+                  CaveAce.TILE_SIZE
+              ),
+              _bulletCreator.isRunning(),
+          )
+      );
+
+      gameRef.add(
+          TrunkGunPower(
+              Position(
+                  width + CaveAce.TILE_SIZE / 2,
+                  CaveAce.TILE_SIZE
+              ),
+              _bulletCreator.isRunning(),
+          )
+      );
     }
   }
 }

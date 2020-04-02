@@ -2,14 +2,14 @@
   "name": "Cave Ace stage test",
   "pickups": [
     {
-      "time": 2,
+      "time": 0,
       "x": 6,
-      "pickup": "SHIELD"
+      "pickup": "TRUNK_GUN"
     }
   ],
   "waves": [
     {
-      "time": 1,
+      "time": 3,
       "enemy": "SHOOTING_PTERO",
       "formation": "LINE",
       "unitSize": 3.8,

@@ -9,6 +9,12 @@ import '../has_hitbox.dart';
 import 'dart:math' as math;
 import 'dart:ui';
 
+
+mixin CanOpenFire {
+  void beginFire();
+  void stopFire();
+}
+
 abstract class Bullet extends SpriteComponent with HasHitbox, HasGameRef<CaveAce> {
 
   final Position speed;
