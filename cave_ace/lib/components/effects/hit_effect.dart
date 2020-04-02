@@ -15,10 +15,10 @@ class HitEffect {
   void update(double dt) {
       _time += dt;
       final curve = Curves.easeIn.transformInternal(min(_time / HIT_EFFECT_DURATION, 1.0));
-      comp.paint = Paint()..colorFilter = ColorFilter.mode(const Color(0xFF6b2643).withOpacity(min(curve, 0.8)), BlendMode.srcATop);
+      comp.overridePaint = Paint()..colorFilter = ColorFilter.mode(const Color(0xFF6b2643).withOpacity(min(curve, 0.8)), BlendMode.srcATop);
 
       if (done) {
-        comp.paint = null;
+        comp.overridePaint = null;
       }
   }
 
