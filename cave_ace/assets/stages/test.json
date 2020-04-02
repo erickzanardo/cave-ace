@@ -9,7 +9,7 @@
   ],
   "waves": [
     {
-      "time": 8,
+      "time": 1,
       "enemy": "SHOOTING_PTERO",
       "formation": "LINE",
       "unitSize": 3.8,

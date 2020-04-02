@@ -7,6 +7,7 @@ import 'dart:ui';
 import '../../game.dart';
 import '../has_hitbox.dart';
 import '../explosion.dart';
+import '../effects/hit_effect.dart';
 
 abstract class EnemyBehaviour {
   void update(double dt, Enemy enemy);
@@ -42,6 +43,8 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
 
   Rect _hitBox;
 
+  HitEffect hitEffect;
+
   Enemy({
     double width,
     double height,
@@ -73,6 +76,13 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
   @override
   void update(double dt) {
     super.update(dt);
+
+    if (hitEffect != null) {
+      hitEffect.update(dt);
+
+      if (hitEffect.done)
+        hitEffect = null;
+    }
 
     if (behaviour != null)
       behaviour.update(dt, this);
@@ -114,6 +124,8 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
 
     if (hitPoints == 0) {
       _destroy();
+    } else if (hitEffect == null) {
+      hitEffect = HitEffect(this);
     }
   }
 }
