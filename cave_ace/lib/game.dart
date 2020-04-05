@@ -6,6 +6,7 @@ import 'package:flame/gestures.dart';
 import './models/stage.dart';
 import './components/player.dart';
 import './components/stage_controller.dart';
+import './components/endless_mode_controller.dart';
 import './components/health_indicator.dart';
 import './components/background.dart';
 import './components/has_hitbox.dart';
@@ -32,6 +33,7 @@ class CaveAce extends BaseGame with PanDetector, HasWidgetsOverlay {
   void _init() {
     add(Background());
     //add(StageController(stage));
+    add(EndlessModeController());
 
     player = Player();
     player.x = (size.width / 2) - (player.width / 2);

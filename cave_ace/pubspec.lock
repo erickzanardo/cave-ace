@@ -159,9 +159,9 @@ packages:
   ordered_set:
     dependency: transitive
     description:
-      name: ordered_set
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../ordered_set"
+      relative: true
+    source: path
     version: "1.1.5"
   path:
     dependency: transitive

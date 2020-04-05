@@ -62,5 +62,8 @@ class PteroCarrier extends AnimationComponent with HasGameRef<CaveAce> {
   }
 
   @override
-  bool destroy() => y > gameRef.size.height || x > gameRef.size.width || toRect().right < 0;
+  bool destroy() {
+    final d = y > gameRef.size.height || x > gameRef.size.width || toRect().right < 0;
+    return d;
+  }
 }

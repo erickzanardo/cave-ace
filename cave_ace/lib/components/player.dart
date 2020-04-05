@@ -103,6 +103,8 @@ class Player extends AnimationComponent with HasGameRef<CaveAce>, HasHitbox, Hit
   void collectPickup(String pickupName) {
     if (pickupName == "SHIELD") {
       gameRef.add(ShieldPower());
+    } else if (pickupName == "HEALTH") {
+      health++;
     } else if (pickupName == "TRUNK_GUN") {
       gameRef.add(
           TrunkGunPower(

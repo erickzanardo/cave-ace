@@ -79,3 +79,12 @@ class TrunkGunPickup extends Pickup {
       image: "trunk_pickup.png",
   );
 }
+
+class HealthPickup extends Pickup {
+  HealthPickup(): super(
+      pickupName: "HEALTH",
+      width: CaveAce.TILE_SIZE,
+      height: CaveAce.TILE_SIZE,
+      image: "ham.png",
+  );
+}

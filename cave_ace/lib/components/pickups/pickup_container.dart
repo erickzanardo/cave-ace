@@ -31,9 +31,6 @@ class PickupContainer extends SpriteComponent with HasGameRef<CaveAce>, HasHitbo
     width = SIZE;
     height = SIZE;
 
-    final xDistance = width / 4;
-    final yDistance = height * 0.8;
-
     gameRef.add(
         _left = PteroCarrier(
             following: this,
@@ -71,6 +68,8 @@ class PickupContainer extends SpriteComponent with HasGameRef<CaveAce>, HasHitbo
       comp = ShieldPickup();
     } else if (pickup == "TRUNK_GUN") {
       comp = TrunkGunPickup();
+    } else if (pickup == "HEALTH") {
+      comp = HealthPickup();
     }
 
     gameRef.add(

@@ -45,6 +45,8 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
 
   HitEffect hitEffect;
 
+  void Function() onDestroyed;
+
   Enemy({
     double width,
     double height,
@@ -110,6 +112,11 @@ abstract class Enemy extends AnimationComponent with HasGameRef<CaveAce>, HasHit
 
   @override
   Rect hitBox() => _hitBox;
+
+  @override
+  void onDestroy() {
+    onDestroyed?.call();
+  }
 
   @override
   bool destroy() => _isDestroyed || y > gameRef.size.height;
