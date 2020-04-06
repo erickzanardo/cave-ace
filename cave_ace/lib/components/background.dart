@@ -35,7 +35,9 @@ class Background extends Component with HasGameRef<CaveAce> {
 
     if (_sections.last.pos.top >= gameRef.size.height) {
       _sections.removeLast();
-      _sections.insert(0, _newSection(-1));
+
+      final y = _sections.first.pos.top - _sectionH;
+      _sections.insert(0, _newSection(y));
     }
   }
 
@@ -63,14 +65,14 @@ class Background extends Component with HasGameRef<CaveAce> {
     final ammount = gameRef.size.height / _sectionH;
 
     for (var i = -1; i < ammount; i++) {
-      _sections.add(_newSection(i));
+      _sections.add(_newSection(i * _sectionH));
     }
   }
 
-  _Section _newSection(int i) {
+  _Section _newSection(double y) {
     final s = _templates[random.nextInt(_templates.length)];
 
-    final r = Rect.fromLTWH(0, i * _sectionH, _sectionW, _sectionH);
+    final r = Rect.fromLTWH(0, y, _sectionW, _sectionH);
 
     return _Section()
         ..sprite = s
