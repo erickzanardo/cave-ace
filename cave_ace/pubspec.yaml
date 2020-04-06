@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flame_splash_screen: 0.0.1
   flame:
     path: ../../flame
 
@@ -38,6 +39,9 @@ flutter:
 
     - assets/images/backgrounds/florest_1.png
     - assets/images/backgrounds/florest_2.png
+
+    - assets/images/title_screen.png
+    - assets/images/cptblackpixel.png
 
     - assets/stages/test.json
 

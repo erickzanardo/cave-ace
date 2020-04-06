@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/flame.dart';
+import 'package:flame_splash_screen/flame_splash_screen.dart';
 
 import './game.dart';
 
-import 'widgets/label.dart';
+import 'widgets/slide_in_container.dart';
 import 'widgets/button.dart';
 
 void main() async {
@@ -18,8 +19,18 @@ void main() async {
 
   runApp(
       MaterialApp(
-          home: TitleScreen(),
           routes: {
+            "/": (ctx) => FlameSplashScreen(
+                theme: FlameSplashTheme.dark,
+                showBefore: (BuildContext context) {
+                  return Image.asset('assets/images/cptblackpixel.png',
+                      width: 400);
+                },
+                onFinish: (BuildContext context) {
+                  Navigator.pushNamed(context, "/tile");
+                },
+            ),
+            "/tile": (_) => TitleScreen(),
             "/game": (_) => GameScreen(res),
           },
       ),
@@ -29,15 +40,16 @@ void main() async {
 
 class GameScaffold extends StatelessWidget {
   final Widget child;
+  final Color color;
 
-  GameScaffold({ this.child });
+  GameScaffold({ this.child, this.color = const Color(0xFF8c78a5)});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-            color: Color(0xFF8c78a5),
+            color: color,
             child: Center(child: child),
         )
     );
@@ -47,14 +59,30 @@ class GameScaffold extends StatelessWidget {
 class TitleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GameScaffold(child: Center(child:
+    return GameScaffold(color: Color(0xffe0b989), child: Center(child:
             Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Label(label: "Cave Ace", fontSize: 30),
-                  PrimaryButton(label: "Play", onPress: () {
-                    Navigator.of(context).pushNamed("/game");
-                  }),
+                  Expanded(
+                      flex: 7,
+                      child: SlideInContainer(
+                          from: Offset(0.0, -1.0),
+                          child: Image.asset(
+                              'assets/images/title_screen.png',
+                              filterQuality: FilterQuality.high,
+                              fit: BoxFit.fill
+                          )
+                      )
+                  ),
+                  SlideInContainer(
+                      from: Offset(0.0, 1.0),
+                      child: Container(
+                          margin: EdgeInsets.only(bottom: 50),
+                          child: PrimaryButton(label: "Play", onPress: () {
+                            Navigator.of(context).pushNamed("/game");
+                          })
+                      ),
+                  ),
                 ],
             )
     ));
