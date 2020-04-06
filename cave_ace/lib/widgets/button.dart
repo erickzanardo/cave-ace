@@ -17,7 +17,7 @@ class SecondaryButton extends Button {
       : super(
           label: label,
           onPress: onPress,
-          fontColor: Color(0xffb0a7b8),
+          fontColor: Color(0xff3859b3),
           backgroundColor: Color(0xffb0a7b8),
         );
 }
