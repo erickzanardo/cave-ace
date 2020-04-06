@@ -107,22 +107,33 @@ class EndlessModeController extends Component with HasGameRef<CaveAce> {
 
     gameRef.add(WaveTextComponent("Wave $wave"));
 
-    for (var i = 0; i < enemyCount; i += 1) {
-      final enemy = _createEnemy();
+    var i = 0;
+    var row = 0;
+    while (i < enemyCount) {
+      var rowCount = max(1, random.nextInt(4));
 
-      enemy.x = (gameRef.size.width - enemy.width) * random.nextDouble();
-      enemy.y = -(i * 100).toDouble();
+      while(rowCount >= 0) {
+        if (i < enemyCount) {
+          final enemy = _createEnemy();
+          enemy.x = rowCount * enemy.width;
+          enemy.y = -(row * 100).toDouble();
 
-      enemy.onDestroyed = () {
-        enemyCount--;
+          enemy.onDestroyed = () {
+            enemyCount--;
 
-        if (enemyCount == 0) {
-          gameRef.add(WaveTextComponent("Wave complete!"));
-          _startNextWave();
+            if (enemyCount == 0) {
+              gameRef.add(WaveTextComponent("Wave complete!"));
+              _startNextWave();
+            }
+          };
+
+          gameRef.addLater(enemy);
+          i++;
         }
-      };
+        rowCount--;
+      }
 
-      gameRef.addLater(enemy);
+      row++;
     }
   }
 
