@@ -4,8 +4,6 @@ import 'package:flame/flame.dart';
 
 import './game.dart';
 
-import './utils/stage_loader.dart';
-
 import 'widgets/label.dart';
 import 'widgets/button.dart';
 
@@ -13,10 +11,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (!kIsWeb) {
+    await Flame.util.initialDimensions();
     await Flame.util.fullScreen();
   }
   final res = Size(360.0, 640.0);
-  final stage = await StageLoader.loadStageData('test');
 
   runApp(
       MaterialApp(
@@ -37,6 +35,7 @@ class GameScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
             color: Color(0xFF8c78a5),
             child: Center(child: child),
